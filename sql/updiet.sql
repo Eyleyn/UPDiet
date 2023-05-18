@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2023 at 04:07 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: May 18, 2023 at 01:57 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,7 +53,8 @@ CREATE TABLE `customer_info` (
 --
 
 INSERT INTO `customer_info` (`u_id`, `username`, `join_date`, `prof_pic`, `c_num`) VALUES
-(1, 'Kyle Enorio', '2023-04-04 09:43:26', 'uploads/img/user/prof-pic/1', '');
+(1, 'Kyle Enorio', '2023-04-04 09:43:26', 'uploads/img/user/prof-pic/1', ''),
+(16, 'EllienMae', '2023-05-18 09:31:44', 'uploads/img/user/prof-pic/16', '09123456789');
 
 -- --------------------------------------------------------
 
@@ -76,8 +77,11 @@ CREATE TABLE `purchase` (
 --
 
 INSERT INTO `purchase` (`t_id`, `date`, `u_id`, `total`, `item_count`, `location`, `remarks`) VALUES
-(25, '2023-05-05 07:53:12', 1, '90.00', 2, 'Balay Miagos', ''),
-(26, '2023-05-06 02:56:57', 1, '105.00', 3, 'CAS', '');
+(25, '2023-05-05 07:53:12', 1, 90.00, 2, 'Balay Miagos', ''),
+(26, '2023-05-06 02:56:57', 1, 105.00, 3, 'CAS', ''),
+(27, '2023-05-18 09:28:56', 1, 135.00, 3, 'Kilid kalsada lang', ''),
+(28, '2023-05-18 09:33:52', 16, 120.00, 3, 'Balay Gumamela', ''),
+(29, '2023-05-18 11:53:50', 16, 60.00, 1, 'dumangas', '');
 
 -- --------------------------------------------------------
 
@@ -100,11 +104,18 @@ CREATE TABLE `purchase_info` (
 --
 
 INSERT INTO `purchase_info` (`t_id`, `order_status`, `food_name`, `store_name`, `price`, `quantity`, `food_img`) VALUES
-(25, 'Pending', 'Leche Flan', 'Manang Betch', '45.00', 1, 'uploads/img/store/menu/2/31'),
-(25, 'Pending', 'Coke', 'Manang Betch', '30.00', 1, 'uploads/img/store/menu/2/32'),
-(26, 'Pending', 'Chicken Adobo', 'Manang Betch', '45.00', 1, 'uploads/img/store/menu/2/29'),
-(26, 'Pending', 'Coke', 'Manang Betch', '30.00', 1, 'uploads/img/store/menu/2/32'),
-(26, 'Pending', 'Rice', 'Manang Betch', '15.00', 1, 'uploads/img/store/menu/2/28');
+(25, 'Pending', 'Leche Flan', 'Manang Betch', 45.00, 1, 'uploads/img/store/menu/2/31'),
+(25, 'Pending', 'Coke', 'Manang Betch', 30.00, 1, 'uploads/img/store/menu/2/32'),
+(26, 'Pending', 'Chicken Adobo', 'Manang Betch', 45.00, 1, 'uploads/img/store/menu/2/29'),
+(26, 'Pending', 'Coke', 'Manang Betch', 30.00, 1, 'uploads/img/store/menu/2/32'),
+(26, 'Pending', 'Rice', 'Manang Betch', 15.00, 1, 'uploads/img/store/menu/2/28'),
+(27, 'Pending', 'Chicken Adobo', 'Manang Betch', 45.00, 1, 'uploads/img/store/menu/2/29'),
+(27, 'Pending', 'Leche Flan', 'Manang Betch', 45.00, 1, 'uploads/img/store/menu/2/31'),
+(27, 'Pending', 'Coke', 'Manang Betch', 30.00, 1, 'uploads/img/store/menu/2/32'),
+(28, 'Pending', 'Rice', 'Manang Betch', 15.00, 2, 'uploads/img/store/menu/2/28'),
+(28, 'Pending', 'Chicken Adobo', 'Manang Betch', 45.00, 1, 'uploads/img/store/menu/2/29'),
+(28, 'Pending', 'Coke', 'Manang Betch', 30.00, 1, 'uploads/img/store/menu/2/32'),
+(29, 'Pending', 'Chicken Adobo', 'Manang Betch', 45.00, 1, 'uploads/img/store/menu/2/29');
 
 -- --------------------------------------------------------
 
@@ -132,7 +143,8 @@ INSERT INTO `store_info` (`u_id`, `location`, `is_published`, `join_date`, `prof
 (12, 'Here', 0, '2023-04-15 04:45:12', NULL, NULL, 'Test', '09123456789'),
 (13, 'test', 0, '2023-04-19 08:51:56', NULL, NULL, 'test1', '09123456789'),
 (14, 'sd', 0, '2023-04-25 01:52:12', NULL, NULL, 'asdf', '09123456789'),
-(15, 'asdf', 0, '2023-04-25 02:17:43', NULL, NULL, 'asdf\'f', '09999999999');
+(15, 'asdf', 0, '2023-04-25 02:17:43', NULL, NULL, 'asdf\'f', '09999999999'),
+(17, 'Mat-y, Miagao', 0, '2023-05-18 09:40:09', 'uploads/img/store/prof_pic/17', NULL, 'El Garaje', '09151566367');
 
 -- --------------------------------------------------------
 
@@ -156,11 +168,11 @@ CREATE TABLE `store_menu` (
 --
 
 INSERT INTO `store_menu` (`menu_id`, `u_id`, `name`, `type`, `date`, `is_published`, `price`, `img`) VALUES
-(26, 13, 'Coke', 'Beverage', '2023-04-21 02:46:02', 1, '15.00', 'uploads/img/store/menu/13/26'),
-(28, 2, 'Rice', 'Add-on', '2023-04-25 01:53:37', 1, '15.00', 'uploads/img/store/menu/2/28'),
-(29, 2, 'Chicken Adobo', 'Main Course', '2023-04-28 04:55:33', 1, '45.00', 'uploads/img/store/menu/2/29'),
-(31, 2, 'Leche Flan', 'Dessert', '2023-05-02 03:36:12', 1, '45.00', 'uploads/img/store/menu/2/31'),
-(32, 2, 'Coke', 'Beverage', '2023-05-02 03:38:12', 1, '30.00', 'uploads/img/store/menu/2/32');
+(26, 13, 'Coke', 'Beverage', '2023-04-21 02:46:02', 1, 15.00, 'uploads/img/store/menu/13/26'),
+(28, 2, 'Rice', 'Add-on', '2023-04-25 01:53:37', 1, 15.00, 'uploads/img/store/menu/2/28'),
+(29, 2, 'Chicken Adobo', 'Main Course', '2023-04-28 04:55:33', 1, 45.00, 'uploads/img/store/menu/2/29'),
+(31, 2, 'Leche Flan', 'Dessert', '2023-05-02 03:36:12', 1, 45.00, 'uploads/img/store/menu/2/31'),
+(32, 2, 'Coke', 'Beverage', '2023-05-02 03:38:12', 1, 30.00, 'uploads/img/store/menu/2/32');
 
 -- --------------------------------------------------------
 
@@ -185,7 +197,9 @@ INSERT INTO `user` (`u_id`, `email`, `password`, `u_type`) VALUES
 (12, 'test@gmail.com', '202cb962ac59075b964b07152d234b70', 'admin'),
 (13, 'test1@gmail.com', '202cb962ac59075b964b07152d234b70', 'admin'),
 (14, 'asd@gmail.com', '202cb962ac59075b964b07152d234b70', 'admin'),
-(15, 'asdf@gmail.com', '202cb962ac59075b964b07152d234b70', 'admin');
+(15, 'asdf@gmail.com', '202cb962ac59075b964b07152d234b70', 'admin'),
+(16, 'ebbanes@up.edu.ph', 'e82c4b19b8151ddc25d4d93baf7b908f', 'user'),
+(17, 'elgaraje@gmail.com', 'e82c4b19b8151ddc25d4d93baf7b908f', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -230,7 +244,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `t_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `t_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `store_menu`
@@ -242,7 +256,7 @@ ALTER TABLE `store_menu`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `u_id` int(222) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
